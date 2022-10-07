@@ -8,6 +8,12 @@
 
 using namespace std;
 
+int user (void)
+{
+	cout<<"1. Juan Perez"<<endl;
+	cout<<"2. Maricela Rodriguez"<<endl;
+}
+
 int pantalla (void)			//interfaz de usuario
 {
 
@@ -15,6 +21,8 @@ int pantalla (void)			//interfaz de usuario
 	cout<<"1.transferir"<<endl;
 	cout<<"2.datos de cuenta"<<endl;
 	cout<<"3.cambiar contraseña"<<endl;
+	cout<<"4.depositar"<<endl;
+	cout<<"5.retirar"<<endl;
 }
 
 int main ()
@@ -50,10 +58,15 @@ int main ()
 	string destino;
 	int cantidad;
 	int confirmar;
-	char salir;
+	int salir;
+	int deposito;
+	int retiro;
+	int usuario;
 	
 	cout<<"*****ingrese tarjeta*****"<<endl;
-	cout<<"usuario 2509 xxxx xxxx xxxx"<<endl;
+	cout<<"ingrese usuario"<<endl;
+	user();
+	 cin>>usuario;
 	cout<<"ingrese nip"<<endl;
 	 cin>> nip;
 	 
@@ -102,8 +115,10 @@ int main ()
 				cout<<cantidad<<" transferidos con exito"<<endl;
 				
 			}
-	cout<<"presione 1 para regresar al menu principal"<<endl;
+	cout<<"presione 1 para salir u otro numero para regresar al menu"<<endl;
 	 cin>>salir;
+	
+	break;
 	
 	case 2 ://///////////////////////////////////////////////ver datos de usuario
 		cout<<"nombre: "<<nombre<<endl;
@@ -111,8 +126,10 @@ int main ()
 		cout<<"numero de tarjeta: "<<num_tarjeta<<endl;
 		cout<<"CLABE "<<CLABE<<endl;
 		
-	cout<<"presione 1 para regresar al menu principal"<<endl;
+	cout<<"presione 1 para salir u otro numero para regresar al menu"<<endl;
 	 cin>>salir;
+	
+	break;
 	
 	case 3 :///////////////////////////////////////////////////////cambiar nip
 		int nip_act;
@@ -129,10 +146,46 @@ int main ()
 			
 			cout<<"nip cambiado exitosamente"<<endl;
 			
-	cout<<"presione 1 para regresar al menu principal"<<endl;
-	 cin>>salir;
+
 			
 		}
+	
+	cout<<"presione 1 para salir u otro numero para regresar al menu"<<endl;
+	 cin>>salir;
+	break;
+	
+	
+	case 4 :////////////////////////////////////////////////deposito
+		cout<<"ingrese cantidad a depositar"<<endl;
+		 cin>>deposito;
+		 
+		if (deposito > 0 )
+		{
+			saldo = saldo + deposito;
+			cout<<"deposito realizado correctamente";
+			
+			}	
+			cout<<"presione 1 para salir u otro numero para regresar al menu"<<endl;
+	 		 cin>>salir;
+	break;		
+	
+	case 5 :////////////////////////////////////////////////retirar
+		
+		cout<<"ingrece cantidad a retirar"<<endl;
+		 cin>>retiro;
+		
+		if (retiro > 0 and retiro < saldo) 
+		{
+			saldo = saldo - retiro;
+			cout<<"retiro exitoso"<<endl;
+		}
+	
+		cout<<"presione 1 para salir otro numero para regresar al menu"<<endl;
+		 cin>>salir;
+		break;
+		
 	}
+	
+	
 	}while (salir != 1);
 }
